@@ -22,7 +22,8 @@ from flutter_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.getData),
-    path('post/',views.postData),
-    path('delete/<int:pk>/',views.EventDeleteView.as_view(),name = 'book-delete')
-    # path('update/',views.EventPageUpdate.as_view())
+    path('api/postdata/',views.postData),
+    path('api/postinstitutename',views.getInsituteName),
+    path('api/getinstitutedetails',views.getInstituteDetails),
+    path('api/postinstitutedetails',views.postInstituteDetails),
 ]
