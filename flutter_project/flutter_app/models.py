@@ -7,11 +7,12 @@ class EventPage(models.Model):
     pass_out_year = models.DateField()
     event_date = models.DateField()
 
+
 class RaiseHand(models.Model):
     raisehand = models.BooleanField()
 
 class RequestInsitute(models.Model):
-    requestInsituteName = models.CharField()
+    requestInsituteName = models.CharField(max_length = 20)
 
 class InstituteDetails(models.Model):
     department = models.CharField(max_length = 20)
