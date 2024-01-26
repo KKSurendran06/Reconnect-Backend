@@ -5,10 +5,10 @@ class EventPage(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,default = 1)
     heading = models.CharField(max_length=20)
     description = models.CharField(max_length=250)
-    location = models.CharField(max_length = 25, default='Delhi')
-    event_time = models.TimeField(default='12:00')
-    pass_out_year = models.DateField()
-    event_date = models.DateField()
+    location = models.CharField(max_length = 10, default='Delhi')
+    event_time = models.CharField(max_length=10)
+    pass_out_year = models.CharField(max_length=4)
+    event_date = models.CharField(max_length=10)
 class RaiseHand(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,default = 1)
     raisehand = models.BooleanField()
@@ -20,7 +20,7 @@ class RequestInstitute(models.Model):
 class InstituteDetails(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,default = 1)
     department = models.CharField(max_length=20)
-    graduation_year = models.DateField()
+    graduation_year = models.CharField(max_length=10)
 
 class EditProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,default = 1)
