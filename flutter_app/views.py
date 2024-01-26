@@ -6,7 +6,7 @@ from .serializer import DataSerializer, RaiseHandSerializer, RequestInstituteSer
 
 @api_view(['GET'])
 def get_data(request):
-    data = EventPage.objects.filter(user=request.user)
+    data = EventPage.objects #.filter(user=request.user)
     serializer = DataSerializer(data, many=True)
     return Response(serializer.data)
 
@@ -20,7 +20,7 @@ def post_data(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+#@permission_classes([IsAuthenticated])
 def raise_hand(request):
     serializer = RaiseHandSerializer(data=request.data)
     if serializer.is_valid():
@@ -29,7 +29,7 @@ def raise_hand(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+#@permission_classes([IsAuthenticated])
 def request_institute(request):
     serializer = RequestInstituteSerializer(data=request.data)
     if serializer.is_valid():
@@ -38,14 +38,14 @@ def request_institute(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+#@permission_classes([IsAuthenticated])
 def get_institute_details(request):
-    details = InstituteDetails.objects.filter(user=request.user)
+    details = InstituteDetails.objects #.filter(user=request.user)
     serializer = InstituteDetailsSerializer(details, many=True)
     return Response(serializer.data)
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+#@permission_classes([IsAuthenticated])
 def post_institute_details(request):
     serializer = InstituteDetailsSerializer(data=request.data)
     if serializer.is_valid():
@@ -54,7 +54,7 @@ def post_institute_details(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+#@permission_classes([IsAuthenticated])
 def get_profile(request):
     profile = EditProfile.objects.get(user=request.user)
     serializer = EditProfileSerializer(profile)
